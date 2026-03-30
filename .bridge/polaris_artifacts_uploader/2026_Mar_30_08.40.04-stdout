@@ -1,0 +1,4 @@
+/home/allenl/claude_project/cases/test_env/polaris/bridge-cli-bundle-linux64/adapters/polaris-artifacts-uploader/versions/0.2.131/polaris-artifacts-uploader /tmp/break-build-clean/.bridge/polaris_artifacts_uploader/data.json
+{"level":"info","logger":"Polaris Artifacts Uploader","msg":"uploading artifact for \"SAST(sastFull)\" assessment with id \"8c18af03-f2d3-4227-b13c-1a4bc2673a66\"","time":"2026-03-30 08:40:04.2908 CST"}
+{"level":"error","logger":"Polaris Artifacts Uploader","msg":"error while uploading the artifact \"/tmp/break-build-clean/.bridge/polaris_coverity_capture/idir.zip\" for \"SAST(sastFull)\" assessment: scan was found unsuccessful","time":"2026-03-30 08:40:04.2909 CST"}
+{"level":"info","logger":"Polaris Artifacts Uploader","msg":"failed the test for \"SAST(sastFull)\" assessment with id \"8c18af03-f2d3-4227-b13c-1a4bc2673a66\"","time":"2026-03-30 08:40:04.9686 CST"}

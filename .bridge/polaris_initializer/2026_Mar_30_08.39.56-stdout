@@ -1,0 +1,4 @@
+/home/allenl/claude_project/cases/test_env/polaris/bridge-cli-bundle-linux64/adapters/polaris-initializer/versions/1.0.218/polaris-initializer /tmp/break-build-clean/.bridge/polaris_initializer/data.json
+{"level":"info","logger":"Polaris Initializer","msg":"project doesn't exist. Will create new project as 'polaris.onboarding' is set to 'true'","time":"2026-03-30 08:39:57.5870 CST"}
+{"level":"info","logger":"Polaris Initializer","msg":"No version specified for cov_thin_client, using recommended version: 2025.12.0","time":"2026-03-30 08:39:58.4865 CST"}
+{"level":"info","logger":"Polaris Initializer","msg":"Successfully created test for \"SAST(sastFull)\" assessment. The short test ID is \"3ZBL68Y\"","time":"2026-03-30 08:39:59.4041 CST"}

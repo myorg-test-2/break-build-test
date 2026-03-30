@@ -1,0 +1,2 @@
+/home/allenl/claude_project/cases/test_env/polaris/bridge-cli-bundle-linux64/adapters/polaris-issues-fetcher/versions/0.2.85/polaris-issues-fetcher /tmp/break-build-clean/.bridge/polaris_issues_fetcher/data.json
+{"level":"warning","logger":"Polaris Issues Fetcher","msg":"Will not fetch issues for \"SAST(sastFull)\" assessment, as the test is not completed","time":"2026-03-30 08:40:05.0999 CST"}

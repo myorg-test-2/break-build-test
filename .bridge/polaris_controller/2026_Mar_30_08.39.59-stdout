@@ -1,0 +1,12 @@
+/home/allenl/claude_project/cases/test_env/polaris/bridge-cli-bundle-linux64/adapters/polaris-controller/versions/0.2.239/polaris-controller /tmp/break-build-clean/.bridge/polaris_controller/data.json
+{"level":"info","logger":"Polaris Controller","msg":"Running for \"sast\" assessment with scan type \"sastFull\"","time":"2026-03-30 08:39:59.4866 CST"}
+{"level":"info","logger":"Polaris Controller","msg":"checking \"coverity\" tool installation inside bridge home directory: /home/allenl/.blackduck/bridge/tools/cov-thin-client/2025.12.0","time":"2026-03-30 08:39:59.4866 CST"}
+{"level":"info","logger":"Polaris Controller","msg":"Checking tool version for \"cov_thin_client\" in \"/home/allenl/.blackduck/bridge/tools/cov-thin-client/2025.12.0\"","time":"2026-03-30 08:39:59.4866 CST"}
+{"level":"info","logger":"Polaris Controller","msg":"Running command:/home/allenl/.blackduck/bridge/tools/cov-thin-client/2025.12.0/bin/coverity --version","time":"2026-03-30 08:39:59.4867 CST"}
+{"level":"info","logger":"Polaris Controller","msg":"Got tool version for \"cov_thin_client\": 2025.12.0","time":"2026-03-30 08:39:59.4926 CST"}
+{"level":"info","logger":"Polaris Controller","msg":"\"coverity\" tool is already installed...","time":"2026-03-30 08:39:59.7220 CST"}
+{"level":"info","logger":"Polaris Controller","msg":"checking \"Sigma\" tool installation inside bridge home directory: /home/allenl/.blackduck/bridge/tools/sigma/2026.2.1","time":"2026-03-30 08:39:59.7220 CST"}
+{"level":"info","logger":"Polaris Controller","msg":"Checking tool version for \"sigma\" in \"/home/allenl/.blackduck/bridge/tools/sigma/2026.2.1\"","time":"2026-03-30 08:39:59.7220 CST"}
+{"level":"info","logger":"Polaris Controller","msg":"Running command:/home/allenl/.blackduck/bridge/tools/sigma/2026.2.1/sigma --version","time":"2026-03-30 08:39:59.7220 CST"}
+{"level":"info","logger":"Polaris Controller","msg":"Got tool version for \"sigma\": 2026.2.1","time":"2026-03-30 08:39:59.7249 CST"}
+{"level":"info","logger":"Polaris Controller","msg":"\"Sigma\" tool is already installed...","time":"2026-03-30 08:39:59.9310 CST"}
