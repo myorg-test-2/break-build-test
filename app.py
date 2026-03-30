@@ -27,3 +27,11 @@ def hello():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/search')
+def search():
+    query = request.args.get('q')
+    # Path Traversal
+    with open("/data/" + query) as f:
+        return f.read()
+# re-trigger after branch policy set
