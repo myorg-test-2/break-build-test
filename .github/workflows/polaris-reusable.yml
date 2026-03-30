@@ -1,0 +1,26 @@
+name: Polaris Reusable Scan
+
+on:
+  workflow_call:
+    inputs:
+      assessment_type:
+        required: true
+        type: string
+    secrets:
+      POLARIS_ACCESS_TOKEN:
+        required: true
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Black Duck Security Scan
+        uses: blackduck-inc/black-duck-security-scan@v2
+        with:
+          polaris_server_url: ${{ vars.POLARIS_URL }}
+          polaris_access_token: ${{ secrets.POLARIS_ACCESS_TOKEN }}
+          polaris_application_name: 'break-build-test'
+          polaris_project_name: 'break-build-test'
+          polaris_assessment_types: ${{ inputs.assessment_type }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
