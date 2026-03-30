@@ -1,0 +1,24 @@
+name: Polaris SAST (Weekly)
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'     # Weekly on Monday at 3:00 AM UTC
+  workflow_dispatch: {}      # Allow manual trigger
+
+permissions:
+  contents: read
+
+jobs:
+  polaris-sast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Black Duck SAST Scan
+        uses: blackduck-inc/black-duck-security-scan@v2
+        with:
+          polaris_server_url: ${{ vars.POLARIS_URL }}
+          polaris_access_token: ${{ secrets.POLARIS_ACCESS_TOKEN }}
+          polaris_application_name: ${{ github.repository_owner }}
+          polaris_project_name: ${{ github.event.repository.name }}
+          polaris_assessment_types: 'SAST'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
