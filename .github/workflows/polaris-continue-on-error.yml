@@ -1,0 +1,31 @@
+name: Polaris Continue On Error Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  polaris-continue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Black Duck Security Scan (mark=failure + continue-on-error)
+        id: scan
+        continue-on-error: true
+        uses: blackduck-inc/black-duck-security-scan@v2
+        with:
+          polaris_server_url: ${{ vars.POLARIS_URL }}
+          polaris_access_token: ${{ secrets.POLARIS_ACCESS_TOKEN }}
+          polaris_application_name: 'break-build-test'
+          polaris_project_name: 'break-build-test'
+          polaris_assessment_types: 'SAST'
+          mark_build_status: 'failure'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Post-scan step (should run even if scan failed)
+        run: |
+          echo "scan outcome=${{ steps.scan.outcome }}"
+          echo "scan conclusion=${{ steps.scan.conclusion }}"
+          echo "This step runs regardless of scan result"
