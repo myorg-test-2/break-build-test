@@ -15,7 +15,7 @@ jobs:
         run: |
           echo "=== Before Action ==="
           ls -la ~/bridge-cli-bundle/ 2>/dev/null || echo "cache dir does not exist"
-      - name: Cache Bridge CLI
+      - name: Cache Bridge CLI (default path)
         id: bridge-cache
         uses: actions/cache@v4
         with:
@@ -23,7 +23,7 @@ jobs:
           key: bridge-cli-${{ runner.os }}-v4.1.2
       - name: Report cache hit
         run: echo "Cache hit=${{ steps.bridge-cache.outputs.cache-hit }}"
-      - name: Black Duck Security Scan (pinned)
+      - name: Black Duck Security Scan (pinned version, default install path)
         id: scan
         continue-on-error: true
         uses: blackduck-inc/black-duck-security-scan@v2
@@ -33,7 +33,6 @@ jobs:
           polaris_application_name: 'break-build-test'
           polaris_project_name: 'break-build-test'
           polaris_assessment_types: 'SAST'
-          bridgecli_install_directory: /home/runner/bridge-cli-bundle
           bridgecli_download_version: '4.1.2'
           mark_build_status: 'success'
           github_token: ${{ secrets.GITHUB_TOKEN }}
