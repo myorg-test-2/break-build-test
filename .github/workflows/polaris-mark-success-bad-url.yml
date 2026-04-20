@@ -1,0 +1,24 @@
+name: Polaris Mark Success with Bad URL (simulate outage)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  polaris-mark-success-bad-url:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Black Duck Security Scan (bad URL, mark_build_status=success)
+        uses: blackduck-inc/black-duck-security-scan@v2
+        with:
+          polaris_server_url: 'https://nonexistent.polaris.blackduck.invalid'
+          polaris_access_token: 'dummy-token-for-outage-simulation'
+          polaris_application_name: 'break-build-test'
+          polaris_project_name: 'break-build-test'
+          polaris_assessment_types: 'SAST'
+          mark_build_status: 'success'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
