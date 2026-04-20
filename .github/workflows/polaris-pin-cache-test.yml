@@ -19,8 +19,8 @@ jobs:
         id: bridge-cache
         uses: actions/cache@v4
         with:
-          path: ~/bridge-cli-bundle
-          key: bridge-cli-${{ runner.os }}-v3.0.524
+          path: /home/runner/bridge-cli-bundle
+          key: bridge-cli-${{ runner.os }}-v4.1.2
       - name: Report cache hit
         run: echo "Cache hit=${{ steps.bridge-cache.outputs.cache-hit }}"
       - name: Black Duck Security Scan (pinned)
@@ -34,7 +34,7 @@ jobs:
           polaris_project_name: 'break-build-test'
           polaris_assessment_types: 'SAST'
           bridgecli_install_directory: /home/runner/bridge-cli-bundle
-          bridgecli_download_version: '3.0.524'
+          bridgecli_download_version: '4.1.2'
           mark_build_status: 'success'
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Check cache state (after)
