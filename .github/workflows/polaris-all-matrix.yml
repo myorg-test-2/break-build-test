@@ -1,0 +1,64 @@
+name: Polaris Remaining Matrix Tests
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  case-8-success-continue:
+    name: "exit 8 + mark=success + continue-on-error=true"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan
+        id: scan
+        continue-on-error: true
+        uses: blackduck-inc/black-duck-security-scan@v2
+        with:
+          polaris_server_url: ${{ vars.POLARIS_URL }}
+          polaris_access_token: ${{ secrets.POLARIS_ACCESS_TOKEN }}
+          polaris_application_name: 'break-build-test'
+          polaris_project_name: 'break-build-test'
+          polaris_assessment_types: 'SAST'
+          mark_build_status: 'success'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo "outcome=${{ steps.scan.outcome }} conclusion=${{ steps.scan.conclusion }}"
+
+  case-2-success-continue:
+    name: "exit 2 + mark=success + continue-on-error=true"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan
+        id: scan
+        continue-on-error: true
+        uses: blackduck-inc/black-duck-security-scan@v2
+        with:
+          polaris_server_url: 'https://nonexistent.polaris.blackduck.invalid'
+          polaris_access_token: 'dummy'
+          polaris_application_name: 'break-build-test'
+          polaris_project_name: 'break-build-test'
+          polaris_assessment_types: 'SAST'
+          mark_build_status: 'success'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo "outcome=${{ steps.scan.outcome }} conclusion=${{ steps.scan.conclusion }}"
+
+  case-2-failure-no-continue:
+    name: "exit 2 + mark=failure + continue-on-error=false"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan
+        id: scan
+        uses: blackduck-inc/black-duck-security-scan@v2
+        with:
+          polaris_server_url: 'https://nonexistent.polaris.blackduck.invalid'
+          polaris_access_token: 'dummy'
+          polaris_application_name: 'break-build-test'
+          polaris_project_name: 'break-build-test'
+          polaris_assessment_types: 'SAST'
+          mark_build_status: 'failure'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
